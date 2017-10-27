@@ -1,14 +1,13 @@
 #!/usr/bin/env node
 'use strict';
 var Cesium = require('cesium');
-var fsExtra = require('fs-extra');
 var path = require('path');
 var yargs = require('yargs');
-var obj2gltf = require('../lib/obj2gltf');
+var obj23dtiles = require('../lib/obj23dtiles');
 
 var defined = Cesium.defined;
 
-var defaults = obj2gltf.defaults;
+var defaults = obj23dtiles.defaults;
 
 var args = process.argv;
 
@@ -41,6 +40,16 @@ var argv = yargs
             describe : 'Add _BTACHID to glTF or glb file.',
             type : 'boolean',
             default : defaults.batchId
+        },
+        b3dm : {
+            describe : 'Convert to b3dm model file, with _BATCHID and default batch table per-mesh.',
+            type : 'boolean',
+            default : defaults.b3dm
+        },
+        outputBatchTable : {
+            describe : 'Output BatchTable Json file.',
+            type : 'boolean',
+            default : defaults.outputBatchTable
         },
         separate : {
             alias : 's',
@@ -127,20 +136,26 @@ if (defined(argv.metallicRoughnessOcclusionTexture) && defined(argv.specularGlos
 }
 
 var objPath = argv.input;
-var gltfPath = argv.output;
+var outputPath = argv.output;
 var name = path.basename(objPath, path.extname(objPath));
 
-if (!defined(gltfPath)) {
-    gltfPath = path.join(path.dirname(objPath), name + '.gltf');
+if (!defined(outputPath)) {
+    outputPath = path.join(path.dirname(objPath), name + '.gltf');
 }
 
-var outputDirectory = path.dirname(gltfPath);
-var extension = path.extname(gltfPath).toLowerCase();
+var outputDirectory = path.dirname(outputPath);
+var extension = path.extname(outputPath).toLowerCase();
 if (argv.binary || extension === '.glb') {
     argv.binary = true;
     extension = '.glb';
 }
-gltfPath = path.join(outputDirectory, name + extension);
+if (argv.b3dm || extension === '.b3dm') {
+    argv.binary = true;
+    argv.batchId = true;
+    argv.b3dm = true;
+    extension = '.b3dm';
+}
+outputPath = path.join(outputDirectory, name + extension);
 
 var overridingTextures = {
     metallicRoughnessOcclusionTexture : argv.metallicRoughnessOcclusionTexture,
@@ -154,6 +169,8 @@ var overridingTextures = {
 var options = {
     binary : argv.binary,
     batchId: argv.batchId,
+    b3dm: argv.b3dm,
+    outputBatchTable: argv.outputBatchTable,
     separate : argv.separate,
     separateTextures : argv.separateTextures,
     checkTransparency : argv.checkTransparency,
@@ -166,23 +183,4 @@ var options = {
     outputDirectory : outputDirectory
 };
 
-console.time('Total');
-
-obj2gltf(objPath, options)
-    .then(function(gltf) {
-        if (argv.binary) {
-            // gltf is a glb buffer
-            return fsExtra.outputFile(gltfPath, gltf);
-        }
-        var jsonOptions = {
-            spaces : 2
-        };
-        return fsExtra.outputJson(gltfPath, gltf, jsonOptions);
-    })
-    .then(function() {
-        console.timeEnd('Total');
-    })
-    .catch(function(error) {
-        console.log(error.message);
-        process.exit(1);
-    });
+obj23dtiles(objPath, outputPath, options);
