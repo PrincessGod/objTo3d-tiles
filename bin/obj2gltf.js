@@ -51,6 +51,12 @@ var argv = yargs
             type : 'boolean',
             default : defaults.outputBatchTable
         },
+        customBatchTable : {
+            alias : 'c',
+            describe : 'Custom BatchTable Json file.',
+            type : 'string',
+            normalize : true
+        },
         separate : {
             alias : 's',
             describe : 'Write separate buffers and textures instead of embedding them in the glTF.',
@@ -171,6 +177,7 @@ var options = {
     batchId: argv.batchId,
     b3dm: argv.b3dm,
     outputBatchTable: argv.outputBatchTable,
+    customBatchTable: argv.customBatchTable,
     separate : argv.separate,
     separateTextures : argv.separateTextures,
     checkTransparency : argv.checkTransparency,
