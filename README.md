@@ -97,7 +97,7 @@ barrel\
 ```
 
 ## Resources
-* Online glTF viewer, make sure your glTF is correct.[Cesium](https://www.virtualgis.io/gltfviewer/),[Three.js](https://gltf-viewer.donmccurdy.com/).
+* Online glTF viewer, make sure your glTF is correct. [Cesium](https://www.virtualgis.io/gltfviewer/), [Three.js](https://gltf-viewer.donmccurdy.com/).
 * [Cesium](https://github.com/AnalyticalGraphicsInc/cesium)
 * [3D Tiles](https://github.com/AnalyticalGraphicsInc/3d-tiles)
 * [glTF](https://github.com/KhronosGroup/glTF)
