@@ -26,13 +26,13 @@ npm install
 
 ### Basic Usage
 
-Convert `.obj` to `.gltf`
+* Convert `.obj` to `.gltf`
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj  // Export barrel.gltf at same folder.
 ```
 
-Convert `.obj` to `.glb`
+* Convert `.obj` to `.glb`
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b  // Export barrel.glb at same folder.
@@ -40,19 +40,19 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b  // Export barrel.glb at
 
 >NOTE: More detial to convert `.gltf` and `.glb` can find at [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf).
 
-Convert `.obj` to `.b3dm` with default batch table, which have `batchId` and `name` property, and `name` is model's name.
+* Convert `.obj` to `.b3dm` with default batch table, which have `batchId` and `name` property, and `name` is model's name.
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm  // Export barrel.b3dm at same folder.
 ```
 
-Convert `.obj` to `.b3dm` with default batch table and export default batch table (a JSON file). Maybe get information for custom batch table.
+* Convert `.obj` to `.b3dm` with default batch table and export default batch table (a JSON file). Maybe get information for custom batch table.
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm --outputBatchTable  // Export barrel.b3dm and barrel_batchTable.json at same folder.
 ```
 
-Convert `.obj` to `.b3dm` with custom batch table.
+* Convert `.obj` to `.b3dm` with custom batch table.
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -c ./bin/barrel/customBatchTbale.json --b3dm // Export barrel.b3dm with custom batch table at same folder.
@@ -89,6 +89,7 @@ barrel\
             - barrel_withDefaultBatchTable.b3dm
             |
             - barrel_withCustonBatchTable.b3dm
+```
 
 ## Resources
 * Online glTF viewer, make sure your glTF is correct.[Cesium](https://www.virtualgis.io/gltfviewer/),[Three.js](https://gltf-viewer.donmccurdy.com/).
@@ -98,6 +99,7 @@ barrel\
 
 ## Credits
 Great thanks to Patrick Cozzi([@pjcozzi](https://github.com/pjcozzi)) for helping and advising.
+
 Thanks [AnalyticalGraphicsInc](https://github.com/AnalyticalGraphicsInc) provide a lot of open source project (like [Cesium](https://github.com/AnalyticalGraphicsInc/cesium) and [3D Tiles](https://github.com/AnalyticalGraphicsInc/3d-tiles)) and creat a great GIS environment.
 
 ## License
