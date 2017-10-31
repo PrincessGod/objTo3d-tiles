@@ -98,7 +98,7 @@ barrel\
 * [glTF](https://github.com/KhronosGroup/glTF)
 
 ## Credits
-Great thanks to Patrick Cozzi([@pjcozzi](https://github.com/pjcozzi)) for helping and advising.
+Great thanks to Sean Lilley([@lilleyse](https://github.com/lilleyse)) for helping and advising.
 
 Thanks [AnalyticalGraphicsInc](https://github.com/AnalyticalGraphicsInc) provide a lot of open source project (like [Cesium](https://github.com/AnalyticalGraphicsInc/cesium) and [3D Tiles](https://github.com/AnalyticalGraphicsInc/3d-tiles)) and creat a great GIS environment.
 
