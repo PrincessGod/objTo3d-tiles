@@ -29,13 +29,15 @@ npm install
 * Convert `.obj` to `.gltf`
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj  // Export barrel.gltf at same folder.
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj
+// Export barrel.gltf at same folder.
 ```
 
 * Convert `.obj` to `.glb`
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b  // Export barrel.glb at same folder.
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b  
+// Export barrel.glb at same folder.
 ```
 
 >NOTE: More detial to convert `.gltf` and `.glb` can find at [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf).
@@ -43,19 +45,22 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b  // Export barrel.glb at
 * Convert `.obj` to `.b3dm` with default batch table, which have `batchId` and `name` property, and `name` is model's name.
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm  // Export barrel.b3dm at same folder.
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm
+// Export barrel.b3dm at same folder.
 ```
 
 * Convert `.obj` to `.b3dm` with default batch table and export default batch table (a JSON file). Maybe get information for custom batch table.
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm --outputBatchTable  // Export barrel.b3dm and barrel_batchTable.json at same folder.
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm --outputBatchTable
+// Export barrel.b3dm and barrel_batchTable.json at same folder.
 ```
 
 * Convert `.obj` to `.b3dm` with custom batch table.
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -c ./bin/barrel/customBatchTbale.json --b3dm // Export barrel.b3dm with custom batch table at same folder.
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -c ./bin/barrel/customBatchTbale.json --b3dm
+// Export barrel.b3dm with custom batch table at same folder.
 ```
 
 ## Sample Data
@@ -93,8 +98,8 @@ barrel\
 
 ## Resources
 * Online glTF viewer, make sure your glTF is correct.[Cesium](https://www.virtualgis.io/gltfviewer/),[Three.js](https://gltf-viewer.donmccurdy.com/).
-* [Cesium](https://github.com/AnalyticalGraphicsInc/cesium).
-* [3D Tiles](https://github.com/AnalyticalGraphicsInc/3d-tiles).
+* [Cesium](https://github.com/AnalyticalGraphicsInc/cesium)
+* [3D Tiles](https://github.com/AnalyticalGraphicsInc/3d-tiles)
 * [glTF](https://github.com/KhronosGroup/glTF)
 
 ## Credits
