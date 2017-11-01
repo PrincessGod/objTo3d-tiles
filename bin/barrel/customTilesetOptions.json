@@ -1,0 +1,13 @@
+{
+    "longitude":      -1.31968,     // Tile center's longitude in radian.
+    "latitude":       0.698874,     // Tile center's latitude in radian.
+    "transHeight":    0.0,          // Model height in meters.
+    "minHeight":      0.0,          // BoundingVolume minimum height in meters.
+    "maxHeight":      40.0,         // BoundingVolume maximum height in meters.
+    "tileWidth":      200.0,        // Tile width in meters, and tile is square.
+    "geometricError": 200.0,        // Tile geometric error in meters.
+    "region":         true,         // Using region bounding volume.
+    "box":            false,        // Using box bounding volume.
+    "sphere":         false         // Using sphere bounding volume.
+    //"transfrom" : Matrix4         // Using for custom transform.
+}
