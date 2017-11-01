@@ -4,6 +4,7 @@ Node command line tool convert obj model file to 3D Tiles, based on [obj2gltf](h
 [Online Demonstration](https://princessgod.github.io/plc/batchedTileset.html)
 
 >NOTE: Only support `.b3dm` for now!
+>
 >Please use Cesium after v1.37, cause this 3d tile use glTF2.0.
 
 ## Getting Start
@@ -82,7 +83,7 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset -p ./bin/barrel/c
 
 The `customTilesetOptions.json` can have options bellow, and these are default values.
 
-```json
+```
 {
     "longitude":      -1.31968,     // Tile center's longitude in radian.
     "latitude":       0.698874,     // Tile center's latitude in radian.
