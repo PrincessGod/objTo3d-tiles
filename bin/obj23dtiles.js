@@ -46,6 +46,17 @@ var argv = yargs
             type : 'boolean',
             default : defaults.b3dm
         },
+        tileset : {
+            describe : 'Convert to b3dm with a single tileset.json.',
+            type : 'boolean',
+            default : defaults.tileset
+        },
+        tilesetOptions : {
+            alias : 'p',
+            describe : 'Tileset options config file.',
+            type : 'string',
+            normalize : true
+        },
         outputBatchTable : {
             describe : 'Output BatchTable Json file.',
             type : 'boolean',
@@ -155,7 +166,7 @@ if (argv.binary || extension === '.glb') {
     argv.binary = true;
     extension = '.glb';
 }
-if (argv.b3dm || extension === '.b3dm') {
+if (argv.tileset || argv.b3dm || extension === '.b3dm') {
     argv.binary = true;
     argv.batchId = true;
     argv.b3dm = true;
@@ -176,8 +187,10 @@ var options = {
     binary : argv.binary,
     batchId: argv.batchId,
     b3dm: argv.b3dm,
-    outputBatchTable: argv.outputBatchTable,
-    customBatchTable: argv.customBatchTable,
+    outputBatchTable : argv.outputBatchTable,
+    customBatchTable : argv.customBatchTable,
+    tileset : argv.tileset,
+    tilesetOptions : argv.tilesetOptions,
     separate : argv.separate,
     separateTextures : argv.separateTextures,
     checkTransparency : argv.checkTransparency,
