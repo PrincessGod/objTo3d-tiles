@@ -99,6 +99,18 @@ The `customTilesetOptions.json` can have options bellow, and these are fake valu
 }
 ```
 
+## Troubleshooting
+First, make sure your `.obj` file is complete, normally include `.obj`, `.mtl` and textures like `.jpg` or `.png`.
+You can preview your `.obj` model via "Mixed Reality Viewer" if your in windows 10.
+Otherwise you can use this [online viewer](https://3dviewer.net/).
+<br />
+<br />
+Second, export `.glb` and check if it display correctly. You can use
+[Cesium](https://www.virtualgis.io/gltfviewer/) or [Three.js](https://gltf-viewer.donmccurdy.com/) gltf viewer.
+<br />
+<br />
+In the end, just export `.b3dm` or tileset and load in Cesium.
+
 ## Sample Data
 Sample data under the `.bin\barrel\` folder. 
 
