@@ -81,11 +81,11 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset -p ./bin/barrel/c
 // Export ./Batchedbarrel folder at same folder which is a tileset with custom tileset options.
 ```
 
-The `customTilesetOptions.json` can have options bellow, and these are default values.
+The `customTilesetOptions.json` can have options bellow, and these are fake values, if do not have custom tileset config, these value will be auto calculate through `.obj` file.
 
 ```
 {
-    "longitude":      -1.31968,     // Tile center's longitude in radian.
+    "longitude":      -1.31968,     // Tile center's(models' point (0,0,0)) longitude in radian.
     "latitude":       0.698874,     // Tile center's latitude in radian.
     "transHeight":    0.0,          // Model height in meters.
     "minHeight":      0.0,          // BoundingVolume minimum height in meters.
