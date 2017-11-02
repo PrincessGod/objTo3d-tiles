@@ -115,6 +115,8 @@ barrel\
     |
     - customBatchTable.json     ---- Custom batchtable used in demonstration.
     |
+    - customTilesetOptions.json ---- Custom tileset optional parameters.
+    |
     - output\                   ---- Export data by using upper files.
         |
         - barrel.glb
