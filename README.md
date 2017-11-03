@@ -100,7 +100,7 @@ The `customTilesetOptions.json` can have options bellow, and these are fake valu
 }
 ```
 
-Here is different bounding volumes.
+Here are different bounding volumes.
 <div style="text-align:center"><img src ="./pics/boundingvolume.png" /></div>
 
 ## Troubleshooting
