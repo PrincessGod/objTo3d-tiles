@@ -46,7 +46,8 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b
 
 >NOTE: If your model using blinn-phong material, and use occlusion when convert to PBR material, the model will looks darker.
 >So `useOcclusion` default is false, so remember adding `--useOcclusion` if your model using PBR material. Here are some showcase about it.
-<div style="text-align:center"><img src ="./pics/useOcclusion.png" /></div>
+
+<p align="center"><img src ="./pics/useOcclusion.png" /></p>
 
 
 * Convert `.obj` to `.b3dm` with default batch table, which have `batchId` and `name` property, and `name` is model's name.
@@ -109,7 +110,7 @@ The `customTilesetOptions.json` can have options bellow, and these are fake valu
 >the lowerest point of your models will be place at `height = 0.0` on the earth. But if you want keep origin heigth you just need specify `transHeight = 0.0`.
 
 Here are different bounding volumes.
-<div style="text-align:center"><img src ="./pics/boundingvolume.png" /></div>
+<p align="center"><img src ="./pics/boundingvolume.png" /></p>
 
 ## Troubleshooting
 First, make sure your `.obj` file is complete, normally include `.obj`, `.mtl` and textures like `.jpg` or `.png`.
