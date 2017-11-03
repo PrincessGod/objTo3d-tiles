@@ -98,7 +98,10 @@ The `customTilesetOptions.json` can have options bellow, and these are fake valu
     "sphere":         false         // Using sphere bounding volume.
     //"transfrom" : Matrix4         // Using for custom transform.
 }
+
 ```
+>NOTE: If you are not specify the `transHeight` option, your model will be place at earth ground surface, which means no matter what the height your models are,
+>the lowerest point of your models will be place at `height = 0.0` on the earth. But if you want keep origin heigth you just need specify `transHeight = 0.0`.
 
 Here are different bounding volumes.
 <div style="text-align:center"><img src ="./pics/boundingvolume.png" /></div>
