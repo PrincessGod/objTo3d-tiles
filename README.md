@@ -91,7 +91,7 @@ The `customTilesetOptions.json` can have options bellow, and these are fake valu
     "minHeight":      0.0,          // BoundingVolume minimum height in meters.
     "maxHeight":      40.0,         // BoundingVolume maximum height in meters.
     "tileWidth":      200.0,        // Tile horizontal(cross longitude) length in meters.
-    "tileHeight":     200.0,        // Tile virtical(cross longitude) length in meters.
+    "tileHeight":     200.0,        // Tile virtical(cross latitude) length in meters.
     "geometricError": 200.0,        // Tile geometric error in meters.
     "region":         true,         // Using region bounding volume.
     "box":            false,        // Using box bounding volume.
