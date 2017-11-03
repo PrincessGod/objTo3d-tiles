@@ -100,6 +100,9 @@ The `customTilesetOptions.json` can have options bellow, and these are fake valu
 }
 ```
 
+Here is different bounding volumes.
+<div style="text-align:center"><img src ="./pics/boundingvolume.png" /></div>
+
 ## Troubleshooting
 First, make sure your `.obj` file is complete, normally include `.obj`, `.mtl` and textures like `.jpg` or `.png`.
 You can preview your `.obj` model via "Mixed Reality Viewer" if your in windows 10.
