@@ -68,6 +68,11 @@ var argv = yargs
             type : 'string',
             normalize : true
         },
+        useOcclusion : {
+            describe : 'Use occlusition texture in MetallicRoughnessMaterial.',
+            type : 'boolean',
+            default : defaults.useOcclusion
+        },
         separate : {
             alias : 's',
             describe : 'Write separate buffers and textures instead of embedding them in the glTF.',
@@ -191,6 +196,7 @@ var options = {
     customBatchTable : argv.customBatchTable,
     tileset : argv.tileset,
     tilesetOptions : argv.tilesetOptions,
+    useOcclusion : argv.useOcclusion,
     separate : argv.separate,
     separateTextures : argv.separateTextures,
     checkTransparency : argv.checkTransparency,
