@@ -44,6 +44,8 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b
 
 >NOTE: More detial to convert `.gltf` and `.glb` can find at [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf).
 
+>NOTE: If your model have tarnsparency texture please add `--checkTransparency` parameter.
+
 >NOTE: If your model using blinn-phong material, and use occlusion when convert to PBR material, the model will looks darker.
 >So `useOcclusion` default is false, so remember adding `--useOcclusion` if your model using PBR material. Here are some showcase about it.
 
