@@ -3,6 +3,8 @@
 var Cesium = require('cesium');
 var path = require('path');
 var yargs = require('yargs');
+var fsExtra = require('fs-extra');
+var combine = require('../lib/combineTileset');
 var obj23dtiles = require('../lib/obj23dtiles');
 
 var defined = Cesium.defined;
@@ -145,7 +147,28 @@ var argv = yargs
             type : 'string',
             normalize : true
         }
-    }).parse(args);
+    })
+    .command('combine', 'Combine tilesets in to one tileset.json.')
+    .parse(args);
+
+if(argv._[2] === 'combine') {
+    console.time('Total');
+    return combine({
+        inputDir: argv.input,
+        outputTileset: argv.output,
+    })
+    .then(function(result) {
+        var tileset = result.tileset;
+        var output = result.output;
+        return fsExtra.writeJson(output, tileset, {spaces: 2});
+    })
+    .then(function() {
+        console.timeEnd('Total');
+    })
+    .catch(function(err) {
+        console.log(err);
+    });
+}
 
 if (argv.metallicRoughness + argv.specularGlossiness + argv.materialsCommon > 1) {
     console.error('Only one material type may be set from [--metallicRoughness, --specularGlossiness, --materialsCommon].');
