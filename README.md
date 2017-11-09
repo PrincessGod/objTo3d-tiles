@@ -114,9 +114,16 @@ The `customTilesetOptions.json` can have options bellow, and these are fake valu
 Here are different bounding volumes.
 <p align="center"><img src ="./pics/boundingvolume.png" /></p>
 
+### Combine tilesets
+You can combine tilesets into one `tileset.json` as external tileset.
+
+```
+node ./bin/obj23dtiles.js combine -i ./your/tilesets/folder/
+```
+
 ## Troubleshooting
 First, make sure your `.obj` file is complete, normally include `.obj`, `.mtl` and textures like `.jpg` or `.png`.
-You can preview your `.obj` model via "Mixed Reality Viewer" if your in windows 10.
+You can preview your `.obj` model via "Mixed Reality Viewer" if you are in windows 10.
 Otherwise you can use this [online viewer](https://3dviewer.net/).
 <br />
 <br />
