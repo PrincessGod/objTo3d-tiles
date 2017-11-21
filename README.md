@@ -47,7 +47,7 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b
 >NOTE: If your model have tarnsparency texture please add `--checkTransparency` parameter.
 
 >NOTE: If your model using blinn-phong material, and use occlusion when convert to PBR material, the model will looks darker.
->So `useOcclusion` default is false, so remember adding `--useOcclusion` if your model using PBR material. Here are some showcase about it.
+>The `useOcclusion` default is false, remember adding `--useOcclusion` if your model using PBR material. Here are some showcase about it.
 
 <p align="center"><img src ="./pics/useOcclusion.png" /></p>
 
