@@ -138,6 +138,10 @@ You can combine tilesets into one `tileset.json` as external tileset.
 node ./bin/obj23dtiles.js combine -i ./your/tilesets/folder/
 ```
 
+## Using as node module
+If you want to use this tool in node or debug, check out [how to use as node module](NODEUSAGE.md).
+
+
 ## Troubleshooting
 First, make sure your `.obj` file is complete, normally include `.obj`, `.mtl` and textures like `.jpg` or `.png`.
 You can preview your `.obj` model via "Mixed Reality Viewer" if you are in windows 10.
