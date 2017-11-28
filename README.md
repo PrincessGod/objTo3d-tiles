@@ -104,7 +104,24 @@ The `customTilesetOptions.json` can have options bellow, and these are fake valu
     "region":         true,         // Using region bounding volume.
     "box":            false,        // Using box bounding volume.
     "sphere":         false         // Using sphere bounding volume.
-    //"transfrom" : Matrix4         // Using for custom transform.
+    //"transform":      [           // Using for custom transform, replace `longitude`,
+    //        0.9686356343768792,   `latitude` and `transHeight`.
+    //        0,
+    //        0.24848542777253735,
+    //        0,
+    //        -0.15986460744966327,
+    //        0.623177611820219,
+    //        0.765567091384559,
+    //        0,
+    //        0.19023226619126932,
+    //        -0.7415555652213445,
+    //        0.6433560667227647,
+    //        0,
+    //        1215011.9317263428,
+    //        -4736309.3434217675,
+    //        4081602.0044800863,
+    //        1
+    //      ]
 }
 
 ```

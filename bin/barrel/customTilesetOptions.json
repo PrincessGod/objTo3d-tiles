@@ -5,6 +5,7 @@
     "minHeight":      0.0,
     "maxHeight":      40.0,
     "tileWidth":      200.0,
+    "tileHeight":     200.0,
     "geometricError": 200.0,
     "region":         true,
     "box":            false,
