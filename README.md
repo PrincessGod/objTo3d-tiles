@@ -3,6 +3,8 @@ Node command line tool convert obj model file to 3D Tiles, based on [obj2gltf](h
 
 [Online Demonstration](https://princessgod.github.io/plc/batchedTileset.html)
 
+[简体中文](README_CN.md)
+
 >NOTE: Only support `.b3dm` for now!
 >
 >Please use Cesium after v1.37, cause this 3d tile use glTF2.0.
@@ -89,12 +91,12 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset -p ./bin/barrel/c
 // Export ./Batchedbarrel folder at same folder which is a tileset with custom tileset options.
 ```
 
-The `customTilesetOptions.json` can have options bellow, and these are fake values, if do not have custom tileset config, these value will be auto calculate through `.obj` file.
+The `customTilesetOptions.json` can have options bellow, and these are fake values, please only add properties you need, other value will be auto calculate through `.obj` file.
 
 ```
 {
-    "longitude":      -1.31968,     // Tile center's(models' point (0,0,0)) longitude in radian.
-    "latitude":       0.698874,     // Tile center's latitude in radian.
+    "longitude":      -1.31968,     // Tile origin's(models' point (0,0,0)) longitude in radian.
+    "latitude":       0.698874,     // Tile origin's latitude in radian.
     "transHeight":    0.0,          // Model height in meters.
     "minHeight":      0.0,          // BoundingVolume minimum height in meters.
     "maxHeight":      40.0,         // BoundingVolume maximum height in meters.
