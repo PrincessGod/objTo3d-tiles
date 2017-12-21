@@ -27,7 +27,7 @@
 
     var objPath = './bin/barrel/barrel.obj';
     var b3dmPath = './bin/barrel/barrel.b3dm';
-    obj23dtiles(objPath, glbPath, {b3dm: true});
+    obj23dtiles(objPath, b3dmPath, {b3dm: true});
 ```
 
 Or use custom batchtable.
