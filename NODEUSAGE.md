@@ -82,10 +82,11 @@ Or use custom tileset options.
 ```javascript
     var fs = require('fs');
     var combine = require('../lib/combineTileset');
+    var outputPath = './bin/tilesets/tileset.json';
 
     combine({inputDir : './bin/tilesets/'})
-        .then(function(tileset) {
-            fs.writeFile('./bin/tilesets/tileset.json', JSON.stringify(tileset), 'utf8');
+        .then(function(result) {
+            fs.writeFile(outputPath, JSON.stringify(result.tileset), 'utf8');
         })
         .catch(function(err) {
             console.log(err);
