@@ -3,7 +3,7 @@
 
 [在线示例](https://princessgod.github.io/plc/batchedTileset.html)
 
->注意: 目前只支持 `.b3dm` ！
+>注意: 目前只支持 `.b3dm` 和 `.i3dm` ！
 >
 >请使用 Cesium v1.37 或以后版本, 因为这里的 3D Tiles 使用 glTF2.0 。
 
@@ -52,26 +52,44 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b
 <p align="center"><img src ="./pics/useOcclusion.png" /></p>
 
 
-* 转换 `.obj` 为 `.b3dm` 同时带有基础的属性表, 包含 `batchId` 和 `name` 属性, `name` 就是模型建模时的名字。
+* 转换 `.obj` 为 `.b3dm` 同时带有基础的[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md), 包含 `batchId` 和 `name` 属性, `name` 就是模型建模时的名字。
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm
 // 在模型目录导出 barrel.b3dm 
 ```
 
-* 转换 `.obj` 为 `.b3dm`，同时导出默认的属性表 (一个 JSON 文件)。可以从这个表中获取相关信息以便制作自定义属性表。
+* 转换 `.obj` 为 `.b3dm`，同时导出默认的[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md) (一个 JSON 文件)。可以从这个表中获取相关信息以便制作自定义属性表。
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm --outputBatchTable
 // 在模型目录导出 barrel.b3dm 和 barrel_batchTable.json
 ```
 
-* 转换 `.obj` 为 `.b3dm`，使用自定义属性表。属性和模型对应关系靠 `batchId` 进行连接。
+* 转换 `.obj` 为 `.b3dm`，使用自定义[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md)。属性和模型对应关系靠 `batchId` 进行连接。
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -c ./bin/barrel/customBatchTbale.json --b3dm
 // 在模型目录导出 barrel.b3dm
 ```
+
+* 转换 `.obj` 为 `.i3dm`，使用自定义[要素表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#feature-table)。
+
+```
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json --i3dm
+// 在模型目录导出 barrel.i3dm
+```
+
+* 转换 `.obj` 为 `.i3dm`，使用自定义[要素表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#feature-table)和[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#batch-table)。
+
+```
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json
+-c ./bin/barrel/customI3dmBatchTable.json --i3dm
+// 在模型目录导出 barrel.i3dm
+```
+
+要素表目前可以使用以下属性控制模型 : `position`（位置），`orientation`（旋转），`scale`（缩放）。
+
 
 ### 创建单个瓦片
 
@@ -82,7 +100,7 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset
 // 在模型目录导出 ./Batchedbarrel 文件夹
 ```
 
-* 创建一个 `.b3dm` 瓦片，并自定义属性表。
+* 创建一个 `.b3dm` 瓦片，并自定义[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md)。
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset -p ./bin/barrel/customTilesetOptions.json
@@ -165,9 +183,13 @@ barrel\
     |                             |- Obj 模型文件
     - barrel.mtl                --
     |
-    - customBatchTable.json     ---- 自定义属性表
+    - customBatchTable.json     ---- b3dm 使用的属性表例子
     |
     - customTilesetOptions.json ---- 自定义瓦片配置文件
+    |
+    - customFeatureTable.json   ---- i3dm 使用的要素表例子
+    |
+    - customI3dmBatchTable.json ---- i3dm 使用的属性表例子
     |
     - output\                   ---- 导出的数据
         |
@@ -177,11 +199,17 @@ barrel\
         |
         - barrel_batchTable.json    ---- 默认属性表
         |
-        - Batchedbarrel\            ---- 瓦片
+        - Batchedbarrel\            ---- 使用 b3dm 的瓦片
         |   |
         |   - tileset.json
         |   |
         |   - barrel.b3dm
+        |
+        - BatchedbarrelI3dm\        ---- 使用 i3dm 的瓦片
+        |   |
+        |   - tileset.json
+        |   |
+        |   - barrel.i3dm
         |
         - BatchedTilesets\          ---- 自定义配置文件的瓦片
             |

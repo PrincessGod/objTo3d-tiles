@@ -5,7 +5,7 @@ Node command line tool convert obj model file to 3D Tiles, based on [obj2gltf](h
 
 [简体中文](README_CN.md)
 
->NOTE: Only support `.b3dm` for now!
+>NOTE: Only support `.b3dm` and `.i3dm` for now!
 >
 >Please use Cesium after v1.37, cause this 3d tile use glTF2.0.
 
@@ -34,14 +34,14 @@ npm install
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj
-// Export barrel.gltf at same folder.
+// Export barrel.gltf at obj folder.
 ```
 
 * Convert `.obj` to `.glb`
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b  
-// Export barrel.glb at same folder.
+// Export barrel.glb at obj folder.
 ```
 
 >NOTE: More detial to convert `.gltf` and `.glb` can find at [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf).
@@ -54,26 +54,43 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b
 <p align="center"><img src ="./pics/useOcclusion.png" /></p>
 
 
-* Convert `.obj` to `.b3dm` with default batch table, which have `batchId` and `name` property, and `name` is model's name.
+* Convert `.obj` to `.b3dm` with default [BatchTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md), which have `batchId` and `name` property, and `name` is model's name.
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm
-// Export barrel.b3dm at same folder.
+// Export barrel.b3dm at obj folder.
 ```
 
-* Convert `.obj` to `.b3dm` with default batch table and export default batch table (a JSON file). Maybe get information for custom batch table.
+* Convert `.obj` to `.b3dm` with default [BatchTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md) and export default BatchTable (a JSON file). Maybe get information for custom BatchTable.
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm --outputBatchTable
-// Export barrel.b3dm and barrel_batchTable.json at same folder.
+// Export barrel.b3dm and barrel_batchTable.json at obj folder.
 ```
 
-* Convert `.obj` to `.b3dm` with custom batch table.
+* Convert `.obj` to `.b3dm` with custom [BatchTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md).
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -c ./bin/barrel/customBatchTbale.json --b3dm
-// Export barrel.b3dm with custom batch table at same folder.
+// Export barrel.b3dm with custom batch table at obj folder.
 ```
+
+* Convert `.obj` to `.i3dm` width [FeatureTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#feature-table).
+
+```
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json --i3dm
+// Export barrel.i3dm at obj folder.
+```
+
+* Convert `.obj` to `.i3dm` with [FeatureTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#feature-table) and [BatchTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#batch-table).
+
+```
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json
+-c ./bin/barrel/customI3dmBatchTable.json --i3dm
+// Export barrel.i3dm with BatchTable at obj folder.
+```
+
+FeatureTable support following parameters : `position`, `orientation`, `scale`.
 
 ### Create Tileset
 
@@ -81,14 +98,14 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -c ./bin/barrel/customBatch
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset
-// Export ./Batchedbarrel folder at same folder which is a tileset.
+// Export ./Batchedbarrel folder at obj folder which is a tileset.
 ```
 
 * Create a single tileset with `.b3dm` tile and custom tileset options.
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset -p ./bin/barrel/customTilesetOptions.json
-// Export ./Batchedbarrel folder at same folder which is a tileset with custom tileset options.
+// Export ./Batchedbarrel folder at obj folder which is a tileset with custom tileset options.
 ```
 
 The `customTilesetOptions.json` can have options bellow, and these are fake values, please only add properties you need, other value will be auto calculate through `.obj` file.
@@ -170,9 +187,13 @@ barrel\
     |                             |- Obj model files.
     - barrel.mtl                --
     |
-    - customBatchTable.json     ---- Custom batchtable used in demonstration.
+    - customBatchTable.json     ---- Custom batchtable for b3dm.
     |
     - customTilesetOptions.json ---- Custom tileset optional parameters.
+    |
+    - customFeatureTable.json   ---- Custom FeatureTable for i3dm.
+    |
+    - customI3dmBatchTable.json ---- Custom BatchTable for i3dm.
     |
     - output\                   ---- Export data by using upper files.
         |
@@ -182,11 +203,17 @@ barrel\
         |
         - barrel_batchTable.json    ---- Default batch table.
         |
-        - Batchedbarrel\            ---- Tileset output
+        - Batchedbarrel\            ---- Tileset use b3dm
         |   |
         |   - tileset.json
         |   |
         |   - barrel.b3dm
+        |
+        - BatchedbarrelI3dm\        ---- Tileset use i3dm
+        |   |
+        |   - tileset.json
+        |   |
+        |   - barrel.i3dm
         |
         - BatchedTilesets\          ---- Tileset with custom tileset.json
             |

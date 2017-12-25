@@ -30,17 +30,79 @@
     obj23dtiles(objPath, b3dmPath, {b3dm: true});
 ```
 
-Or use custom batchtable.
+Or use custom BatchTable.
 
 ```javascript
     var obj23dtiles = require('./lib/obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var b3dmPath = './bin/barrel/barrel.b3dm';
-    var customBatchTable = './bin/barrel/customBatchTbale.json'
+    var customBatchTable = './bin/barrel/customBatchTbale.json' // file or JS Object.
     obj23dtiles(objPath, glbPath, {
         b3dm: true,
         customBatchTable: customBatchTable
+    });
+```
+
+## Convert to `.i3dm`
+
+```javascript
+    var obj23dtiles = require('./lib/obj23dtiles');
+
+    var objPath = './bin/barrel/barrel.obj';
+    var i3dmPath = './bin/barrel/barrel.i3dm';
+    obj23dtiles(objPath, i3dmPath, {
+        i3dm: true,
+        customFeatureTable: {
+            position: [
+                [0, 0, 0],
+                [20, 0, 0]
+            ],
+            orientation: [
+                [0, 0, 0],
+                [0, 0, 45]
+            ],
+            scale: [
+                [1, 1, 1],
+                [0.8, 0.8, 0.8]
+            ]
+        }
+    });
+```
+
+Or use custom BatchTable.
+
+```javascript
+    var obj23dtiles = require('./lib/obj23dtiles');
+
+    var objPath = './bin/barrel/barrel.obj';
+    var i3dmPath = './bin/barrel/barrel.i3dm';
+    obj23dtiles(objPath, i3dmPath, {
+        i3dm: true,
+        customFeatureTable: {
+            position: [
+                [0, 0, 0],
+                [20, 0, 0]
+            ],
+            orientation: [
+                [0, 0, 0],
+                [0, 0, 45]
+            ],
+            scale: [
+                [1, 1, 1],
+                [0.8, 0.8, 0.8]
+            ]
+        },
+        customBatchTable: {
+            name: [
+                'modelNormal',
+                'modelModified'
+            ],
+            id: [
+                0,
+                1
+            ]
+        }
     });
 ```
 
