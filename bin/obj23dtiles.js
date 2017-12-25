@@ -48,6 +48,11 @@ var argv = yargs
             type : 'boolean',
             default : defaults.b3dm
         },
+        i2dm : {
+            describe : 'Convert to i3dm model file, with custom FeatureTable and BatchTable.',
+            type : 'boolean',
+            default : defaults.i3dm
+        },
         tileset : {
             describe : 'Convert to b3dm with a single tileset.json.',
             type : 'boolean',
@@ -68,6 +73,12 @@ var argv = yargs
             alias : 'c',
             describe : 'Custom BatchTable Json file.',
             type : 'string',
+            normalize : true
+        },
+        customFeatureTable : {
+            alias : 'f',
+            describe : 'Custom FeatureTable Json file.',
+            type: 'string',
             normalize : true
         },
         useOcclusion : {
@@ -200,6 +211,13 @@ if (argv.tileset || argv.b3dm || extension === '.b3dm') {
     argv.b3dm = true;
     extension = '.b3dm';
 }
+if (argv.i3dm || extension === '.i3dm') {
+    argv.binary = true;
+    argv.batchId = false;
+    argv.b3dm = false;
+    argv.i3dm = true;
+    extension = '.i3dm';
+}
 outputPath = path.join(outputDirectory, name + extension);
 
 var overridingTextures = {
@@ -215,8 +233,10 @@ var options = {
     binary : argv.binary,
     batchId: argv.batchId,
     b3dm: argv.b3dm,
+    i3dm: argv.i3dm,
     outputBatchTable : argv.outputBatchTable,
     customBatchTable : argv.customBatchTable,
+    customFeatureTable : argv.customFeatureTable,
     tileset : argv.tileset,
     tilesetOptions : argv.tilesetOptions,
     useOcclusion : argv.useOcclusion,
