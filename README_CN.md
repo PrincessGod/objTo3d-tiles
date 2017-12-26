@@ -135,7 +135,6 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
     "box":            false,        // 使用 box 作为外包体。
     "sphere":         false         // 使用 sphere 作为外包体。
 }
-
 ```
 >注意: 如果你没有指明 `transHeight` 属性，你的模型会被放置在高度为0的地表，无论你模型最低点是什么值。比如你有一个飞机模型，它在1000单位高度，那就会被放置在地面上，同样的道理如果你有一个潜艇，都在原点以下，也会被抬升到地面上。所以如果你想保留原始模型的相对高度，可以设置 `transHeight = 0.0`。
 
