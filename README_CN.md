@@ -97,14 +97,32 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatu
 
 ```
 node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset
-// 在模型目录导出 ./Batchedbarrel 文件夹
+// 在模型目录导出 Batchedbarrel 文件夹
 ```
 
-* 创建一个 `.b3dm` 瓦片，并自定义[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md)。
+* 创建一个 `.b3dm` 瓦片，并自定义瓦片参数和属性表。
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset -p ./bin/barrel/customTilesetOptions.json
-// 在模型目录导出 ./Batchedbarrel 
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset 
+-p ./bin/barrel/customTilesetOptions.json -c ./bin/barrel/customBatchTbale.json
+// 在模型目录导出 Batchedbarrel 文件夹
+```
+
+* 创建一个 `.i3dm` 瓦片。
+
+```
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
+-f ./bin/barrel/customFeatureTable.json
+// 在模型目录导出 Instancedbarrel 文件夹
+```
+
+* 创建一个 `.i3dm` 瓦片，并自定义瓦片参数和属性表。
+
+```
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
+-f ./bin/barrel/customFeatureTable.json -p ./bin/barrel/customTilesetOptions.json
+-c ./bin/barrel/customI3dmBatchTable.json
+// 在模型目录导出 Instancedbarrel 文件夹
 ```
 
 `customTilesetOptions.json` 配置文件可以包含以下信息, 这些都是虚拟值，请在文件中包含自己想修改的属性，没有出现的属性会根据模型自动计算。
@@ -113,32 +131,9 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset -p ./bin/barrel/c
     "longitude":      -1.31968,     // 瓦片原点(模型原点 (0,0,0)) 经度的弧度值。
     "latitude":       0.698874,     // 瓦片原点维度的弧度值。
     "transHeight":    0.0,          // 瓦片原点所在高度，单位为米。
-    "minHeight":      0.0,          // BoundingVolume 最低高度，单位为米。
-    "maxHeight":      40.0,         // BoundingVolume 最高高度，单位为米。
-    "tileWidth":      200.0,        // 瓦片水平（横穿经度）方向长度，单位为米。
-    "tileHeight":     200.0,        // 瓦片垂直（横穿纬度）方向长度，单位为米。
-    "geometricError": 200.0,        // 瓦片几何误差，用来控制显隐。
     "region":         true,         // 使用 region 作为外包体。
     "box":            false,        // 使用 box 作为外包体。
     "sphere":         false         // 使用 sphere 作为外包体。
-    //"transform":      [           // 使用自定义转换矩阵, 用来代替 `longitude`,
-    //        0.9686356343768792,   `latitude` 和 `transHeight` 属性。
-    //        0,
-    //        0.24848542777253735,
-    //        0,
-    //        -0.15986460744966327,
-    //        0.623177611820219,
-    //        0.765567091384559,
-    //        0,
-    //        0.19023226619126932,
-    //        -0.7415555652213445,
-    //        0.6433560667227647,
-    //        0,
-    //        1215011.9317263428,
-    //        -4736309.3434217675,
-    //        4081602.0044800863,
-    //        1
-    //      ]
 }
 
 ```
@@ -205,7 +200,7 @@ barrel\
         |   |
         |   - barrel.b3dm
         |
-        - BatchedbarrelI3dm\        ---- 使用 i3dm 的瓦片
+        - Instancedbarrel\          ---- 使用 i3dm 的瓦片
         |   |
         |   - tileset.json
         |   |

@@ -108,6 +108,8 @@ Or use custom BatchTable.
 
 ## Convert to tileset
 
+* Convert to `.b3dm` tileset.
+
 ```javascript
     var obj23dtiles = require('./lib/obj23dtiles');
 
@@ -116,7 +118,7 @@ Or use custom BatchTable.
     obj23dtiles(objPath, tilesetPath, {tileset: true});
 ```
 
-Or use custom tileset options.
+Or use custom tileset options and BatchTable.
 
 ```javascript
     var obj23dtiles = require('./lib/obj23dtiles');
@@ -135,6 +137,91 @@ Or use custom tileset options.
             tileHeight:     200.0,
             geometricError: 200.0,
             region:         true
+        },
+        customBatchTable: {
+            name: [
+                'model1',
+                'model2'
+            ],
+            id: [
+                0,
+                1
+            ]
+        }
+    });
+```
+
+* Convert to `.i3dm` tileset.
+
+```javascript
+    var obj23dtiles = require('./lib/obj23dtiles');
+
+    var objPath = './bin/barrel/barrel.obj';
+    var tilesetPath = './bin/barrel/barrel.i3dm';
+    obj23dtiles(objPath, tilesetPath, {
+        tileset: true,
+        i3dm: true,
+        customFeatureTable: {
+            position: [
+                [0, 0, 0],
+                [20, 0, 0]
+            ],
+            orientation: [
+                [0, 0, 0],
+                [0, 0, 45]
+            ],
+            scale: [
+                [1, 1, 1],
+                [0.8, 0.8, 0.8]
+            ]
+        }
+    });
+```
+
+Or use custom tileset options and BatchTable.
+
+```javascript
+    var obj23dtiles = require('./lib/obj23dtiles');
+
+    var objPath = './bin/barrel/barrel.obj';
+    var tilesetPath = './bin/barrel/barrel.i3dm';
+    obj23dtiles(objPath, tilesetPath, {
+        tileset: true,
+        i3dm: true,
+        customFeatureTable: {
+            position: [
+                [0, 0, 0],
+                [20, 0, 0]
+            ],
+            orientation: [
+                [0, 0, 0],
+                [0, 0, 45]
+            ],
+            scale: [
+                [1, 1, 1],
+                [0.8, 0.8, 0.8]
+            ]
+        },
+        tilesetOptions: {
+            longitude:      -1.31968,
+            latitude:       0.698874,
+            transHeight:    0.0,
+            minHeight:      0.0,
+            maxHeight:      40.0,
+            tileWidth:      200.0,
+            tileHeight:     200.0,
+            geometricError: 200.0,
+            region:         true
+        },
+        customBatchTable: {
+            name: [
+                'model1',
+                'model2'
+            ],
+            id: [
+                0,
+                1
+            ]
         }
     });
 ```

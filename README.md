@@ -101,11 +101,29 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset
 // Export ./Batchedbarrel folder at obj folder which is a tileset.
 ```
 
-* Create a single tileset with `.b3dm` tile and custom tileset options.
+* Create a single tileset with `.b3dm` tile and custom tileset options, custom BatchTable.
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset -p ./bin/barrel/customTilesetOptions.json
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset 
+-p ./bin/barrel/customTilesetOptions.json -c ./bin/barrel/customBatchTbale.json
 // Export ./Batchedbarrel folder at obj folder which is a tileset with custom tileset options.
+```
+
+* Create a single tileset with `.i3dm` tile.
+
+```
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
+-f ./bin/barrel/customFeatureTable.json
+// Export ./Instancedbarrel folder at obj folder which is a tileset.
+```
+
+* Create a single tileset with `.i3dm` tile and custom tileset options, custom BatchTable.
+
+```
+node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
+-f ./bin/barrel/customFeatureTable.json -p ./bin/barrel/customTilesetOptions.json
+-c ./bin/barrel/customI3dmBatchTable.json
+// Export ./Instancedbarrel folder at obj folder which is a tileset.
 ```
 
 The `customTilesetOptions.json` can have options bellow, and these are fake values, please only add properties you need, other value will be auto calculate through `.obj` file.
@@ -114,33 +132,10 @@ The `customTilesetOptions.json` can have options bellow, and these are fake valu
 {
     "longitude":      -1.31968,     // Tile origin's(models' point (0,0,0)) longitude in radian.
     "latitude":       0.698874,     // Tile origin's latitude in radian.
-    "transHeight":    0.0,          // Model height in meters.
-    "minHeight":      0.0,          // BoundingVolume minimum height in meters.
-    "maxHeight":      40.0,         // BoundingVolume maximum height in meters.
-    "tileWidth":      200.0,        // Tile horizontal(cross longitude) length in meters.
-    "tileHeight":     200.0,        // Tile virtical(cross latitude) length in meters.
-    "geometricError": 200.0,        // Tile geometric error in meters.
+    "transHeight":    0.0,          // Tile origin's height in meters.
     "region":         true,         // Using region bounding volume.
     "box":            false,        // Using box bounding volume.
     "sphere":         false         // Using sphere bounding volume.
-    //"transform":      [           // Using for custom transform, replace `longitude`,
-    //        0.9686356343768792,   `latitude` and `transHeight`.
-    //        0,
-    //        0.24848542777253735,
-    //        0,
-    //        -0.15986460744966327,
-    //        0.623177611820219,
-    //        0.765567091384559,
-    //        0,
-    //        0.19023226619126932,
-    //        -0.7415555652213445,
-    //        0.6433560667227647,
-    //        0,
-    //        1215011.9317263428,
-    //        -4736309.3434217675,
-    //        4081602.0044800863,
-    //        1
-    //      ]
 }
 
 ```
@@ -209,7 +204,7 @@ barrel\
         |   |
         |   - barrel.b3dm
         |
-        - BatchedbarrelI3dm\        ---- Tileset use i3dm
+        - Instancedbarrel\          ---- Tileset use i3dm
         |   |
         |   - tileset.json
         |   |
