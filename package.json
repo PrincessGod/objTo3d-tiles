@@ -16,6 +16,10 @@
     "3d-tiles",
     "cesium"
   ],
+  "preferGlobal": true,
+  "bin": {
+    "obj23dtiles" : "bin/obj23dtiles.js"
+  },
   "author": "princessgod",
   "license": "ISC",
   "bugs": {

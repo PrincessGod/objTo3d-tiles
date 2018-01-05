@@ -8,22 +8,11 @@
 >请使用 Cesium v1.37 或以后版本, 因为这里的 3D Tiles 使用 glTF2.0 。
 
 ## 开始使用
-将此仓库克隆到本地。
-
-```
-git clone https://github.com/PrincessGod/objTo3d-tiles.git
-```
-
-导航到仓库所在文件夹。
-
-```
-cd objTo3d-tiles
-```
 
 确保已经安装 [Node](https://nodejs.org/en/) , 然后
 
 ```
-npm install
+npm install obj23dtiles
 ```
 
 ### 基本用法
@@ -31,14 +20,14 @@ npm install
 * 转换 `.obj` 为 `.gltf`
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj
+obj23dtiles -i ./bin/barrel/barrel.obj
 // 在模型目录导出 barrel.gltf 
 ```
 
 * 转换 `.obj` 为 `.glb`
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b  
+obj23dtiles -i ./bin/barrel/barrel.obj -b  
 // 在模型目录导出 barrel.glb 
 ```
 
@@ -55,35 +44,35 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b
 * 转换 `.obj` 为 `.b3dm` 同时带有基础的[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md), 包含 `batchId` 和 `name` 属性, `name` 就是模型建模时的名字。
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm
+obj23dtiles -i ./bin/barrel/barrel.obj --b3dm
 // 在模型目录导出 barrel.b3dm 
 ```
 
 * 转换 `.obj` 为 `.b3dm`，同时导出默认的[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md) (一个 JSON 文件)。可以从这个表中获取相关信息以便制作自定义属性表。
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm --outputBatchTable
+obj23dtiles -i ./bin/barrel/barrel.obj --b3dm --outputBatchTable
 // 在模型目录导出 barrel.b3dm 和 barrel_batchTable.json
 ```
 
 * 转换 `.obj` 为 `.b3dm`，使用自定义[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md)。属性和模型对应关系靠 `batchId` 进行连接。
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -c ./bin/barrel/customBatchTbale.json --b3dm
+obj23dtiles -i ./bin/barrel/barrel.obj -c ./bin/barrel/customBatchTable.json --b3dm
 // 在模型目录导出 barrel.b3dm
 ```
 
 * 转换 `.obj` 为 `.i3dm`，使用自定义[要素表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#feature-table)。
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json --i3dm
+obj23dtiles -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json --i3dm
 // 在模型目录导出 barrel.i3dm
 ```
 
 * 转换 `.obj` 为 `.i3dm`，使用自定义[要素表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#feature-table)和[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#batch-table)。
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json
+obj23dtiles -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json
 -c ./bin/barrel/customI3dmBatchTable.json --i3dm
 // 在模型目录导出 barrel.i3dm
 ```
@@ -96,22 +85,22 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatu
 * 创建一个 `.b3dm` 瓦片。
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset
+obj23dtiles -i ./bin/barrel/barrel.obj --tileset
 // 在模型目录导出 Batchedbarrel 文件夹
 ```
 
 * 创建一个 `.b3dm` 瓦片，并自定义瓦片参数和属性表。
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset 
--p ./bin/barrel/customTilesetOptions.json -c ./bin/barrel/customBatchTbale.json
+obj23dtiles -i ./bin/barrel/barrel.obj --tileset 
+-p ./bin/barrel/customTilesetOptions.json -c ./bin/barrel/customBatchTable.json
 // 在模型目录导出 Batchedbarrel 文件夹
 ```
 
 * 创建一个 `.i3dm` 瓦片。
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
+obj23dtiles -i ./bin/barrel/barrel.obj --tileset --i3dm
 -f ./bin/barrel/customFeatureTable.json
 // 在模型目录导出 Instancedbarrel 文件夹
 ```
@@ -119,7 +108,7 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
 * 创建一个 `.i3dm` 瓦片，并自定义瓦片参数和属性表。
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
+obj23dtiles -i ./bin/barrel/barrel.obj --tileset --i3dm
 -f ./bin/barrel/customFeatureTable.json -p ./bin/barrel/customTilesetOptions.json
 -c ./bin/barrel/customI3dmBatchTable.json
 // 在模型目录导出 Instancedbarrel 文件夹
@@ -145,7 +134,7 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
 你可以将多个瓦片捆绑为一个瓦片，每个瓦片作为外置瓦片集合到一个 `tileset.json` 中。
 
 ```
-node ./bin/obj23dtiles.js combine -i ./your/tilesets/folder/
+obj23dtiles combine -i ./bin/barrel/output/
 ```
 
 ## 作为 Node 模块使用

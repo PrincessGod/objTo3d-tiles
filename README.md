@@ -1,5 +1,5 @@
 # objTo3d-tiles
-Node command line tool convert obj model file to 3D Tiles, based on [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf).
+Node command line tool and module convert obj model file to 3D Tiles, based on [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf).
 
 [Online Demonstration](https://princessgod.github.io/plc/batchedTileset.html)
 
@@ -10,22 +10,11 @@ Node command line tool convert obj model file to 3D Tiles, based on [obj2gltf](h
 >Please use Cesium after v1.37, cause this 3d tile use glTF2.0.
 
 ## Getting Start
-Clone this repository to local.
-
-```
-git clone https://github.com/PrincessGod/objTo3d-tiles.git
-```
-
-Navigate in the repository folder.
-
-```
-cd objTo3d-tiles
-```
 
 Make sure you have [Node](https://nodejs.org/en/) installed, and then
 
 ```
-npm install
+npm install -g obj23dtiles
 ```
 
 ### Basic Usage
@@ -33,14 +22,14 @@ npm install
 * Convert `.obj` to `.gltf`
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj
+obj23dtiles -i ./bin/barrel/barrel.obj
 // Export barrel.gltf at obj folder.
 ```
 
 * Convert `.obj` to `.glb`
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b  
+obj23dtiles -i ./bin/barrel/barrel.obj -b  
 // Export barrel.glb at obj folder.
 ```
 
@@ -57,35 +46,35 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -b
 * Convert `.obj` to `.b3dm` with default [BatchTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md), which have `batchId` and `name` property, and `name` is model's name.
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm
+obj23dtiles -i ./bin/barrel/barrel.obj --b3dm
 // Export barrel.b3dm at obj folder.
 ```
 
 * Convert `.obj` to `.b3dm` with default [BatchTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md) and export default BatchTable (a JSON file). Maybe get information for custom BatchTable.
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --b3dm --outputBatchTable
+obj23dtiles -i ./bin/barrel/barrel.obj --b3dm --outputBatchTable
 // Export barrel.b3dm and barrel_batchTable.json at obj folder.
 ```
 
 * Convert `.obj` to `.b3dm` with custom [BatchTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md).
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -c ./bin/barrel/customBatchTbale.json --b3dm
+obj23dtiles -i ./bin/barrel/barrel.obj -c ./bin/barrel/customBatchTable.json --b3dm
 // Export barrel.b3dm with custom batch table at obj folder.
 ```
 
 * Convert `.obj` to `.i3dm` width [FeatureTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#feature-table).
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json --i3dm
+obj23dtiles -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json --i3dm
 // Export barrel.i3dm at obj folder.
 ```
 
 * Convert `.obj` to `.i3dm` with [FeatureTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#feature-table) and [BatchTable](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/Instanced3DModel/README.md#batch-table).
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json
+obj23dtiles -i ./bin/barrel/barrel.obj -f ./bin/barrel/customFeatureTable.json
 -c ./bin/barrel/customI3dmBatchTable.json --i3dm
 // Export barrel.i3dm with BatchTable at obj folder.
 ```
@@ -97,22 +86,22 @@ FeatureTable support following parameters : `position`, `orientation`, `scale`.
 * Create a single tileset with `.b3dm` tile.
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset
+obj23dtiles -i ./bin/barrel/barrel.obj --tileset
 // Export ./Batchedbarrel folder at obj folder which is a tileset.
 ```
 
 * Create a single tileset with `.b3dm` tile and custom tileset options, custom BatchTable.
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset 
--p ./bin/barrel/customTilesetOptions.json -c ./bin/barrel/customBatchTbale.json
+obj23dtiles -i ./bin/barrel/barrel.obj --tileset 
+-p ./bin/barrel/customTilesetOptions.json -c ./bin/barrel/customBatchTable.json
 // Export ./Batchedbarrel folder at obj folder which is a tileset with custom tileset options.
 ```
 
 * Create a single tileset with `.i3dm` tile.
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
+obj23dtiles -i ./bin/barrel/barrel.obj --tileset --i3dm
 -f ./bin/barrel/customFeatureTable.json
 // Export ./Instancedbarrel folder at obj folder which is a tileset.
 ```
@@ -120,7 +109,7 @@ node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
 * Create a single tileset with `.i3dm` tile and custom tileset options, custom BatchTable.
 
 ```
-node ./bin/obj23dtiles.js -i ./bin/barrel/barrel.obj --tileset --i3dm
+obj23dtiles -i ./bin/barrel/barrel.obj --tileset --i3dm
 -f ./bin/barrel/customFeatureTable.json -p ./bin/barrel/customTilesetOptions.json
 -c ./bin/barrel/customI3dmBatchTable.json
 // Export ./Instancedbarrel folder at obj folder which is a tileset.
@@ -148,7 +137,7 @@ Here are different bounding volumes.
 You can combine tilesets into one `tileset.json` as external tileset.
 
 ```
-node ./bin/obj23dtiles.js combine -i ./your/tilesets/folder/
+obj23dtiles combine -i ./bin/barrel/output
 ```
 
 ## Using as node module
