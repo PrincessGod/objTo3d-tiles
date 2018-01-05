@@ -1,9 +1,14 @@
 # Using as module in node.
 
+Install package from npm.
+```
+    npm install obj23dtiles
+```
+
 ## Convert to `.gltf`
 
 ```javascript
-    var obj23dtiles = require('./lib/obj23dtiles');
+    var obj23dtiles = require('obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var gltfPath = './bin/barrel/barrel.gltf';
@@ -13,7 +18,7 @@
 ## Convert to `.glb`
 
 ```javascript
-    var obj23dtiles = require('./lib/obj23dtiles');
+    var obj23dtiles = require('obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var glbPath = './bin/barrel/barrel.glb';
@@ -23,7 +28,7 @@
 ## Convert to `.b3dm`
 
 ```javascript
-    var obj23dtiles = require('./lib/obj23dtiles');
+    var obj23dtiles = require('obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var b3dmPath = './bin/barrel/barrel.b3dm';
@@ -33,12 +38,12 @@
 Or use custom BatchTable.
 
 ```javascript
-    var obj23dtiles = require('./lib/obj23dtiles');
+    var obj23dtiles = require('obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var b3dmPath = './bin/barrel/barrel.b3dm';
-    var customBatchTable = './bin/barrel/customBatchTbale.json' // file or JS Object.
-    obj23dtiles(objPath, glbPath, {
+    var customBatchTable = './bin/barrel/customBatchTable.json' // file or JS Object.
+    obj23dtiles(objPath, b3dmPath, {
         b3dm: true,
         customBatchTable: customBatchTable
     });
@@ -47,7 +52,7 @@ Or use custom BatchTable.
 ## Convert to `.i3dm`
 
 ```javascript
-    var obj23dtiles = require('./lib/obj23dtiles');
+    var obj23dtiles = require('obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var i3dmPath = './bin/barrel/barrel.i3dm';
@@ -73,7 +78,7 @@ Or use custom BatchTable.
 Or use custom BatchTable.
 
 ```javascript
-    var obj23dtiles = require('./lib/obj23dtiles');
+    var obj23dtiles = require('obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var i3dmPath = './bin/barrel/barrel.i3dm';
@@ -111,7 +116,7 @@ Or use custom BatchTable.
 * Convert to `.b3dm` tileset.
 
 ```javascript
-    var obj23dtiles = require('./lib/obj23dtiles');
+    var obj23dtiles = require('obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var tilesetPath = './bin/barrel/barrel.b3dm';
@@ -121,7 +126,7 @@ Or use custom BatchTable.
 Or use custom tileset options and BatchTable.
 
 ```javascript
-    var obj23dtiles = require('./lib/obj23dtiles');
+    var obj23dtiles = require('obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var tilesetPath = './bin/barrel/barrel.b3dm';
@@ -138,14 +143,22 @@ Or use custom tileset options and BatchTable.
             geometricError: 200.0,
             region:         true
         },
-        customBatchTable: {
+        customBatchTable: { // Cause default BatchTable 'batchId' length is 14
             name: [
                 'model1',
-                'model2'
-            ],
-            id: [
-                0,
-                1
+                'model2',
+                'model3',
+                'model4',
+                'model5',
+                'model6',
+                'model7',
+                'model8',
+                'model9',
+                'model10',
+                'model11',
+                'model12',
+                'model13',
+                'model14'
             ]
         }
     });
@@ -154,7 +167,7 @@ Or use custom tileset options and BatchTable.
 * Convert to `.i3dm` tileset.
 
 ```javascript
-    var obj23dtiles = require('./lib/obj23dtiles');
+    var obj23dtiles = require('obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var tilesetPath = './bin/barrel/barrel.i3dm';
@@ -181,7 +194,7 @@ Or use custom tileset options and BatchTable.
 Or use custom tileset options and BatchTable.
 
 ```javascript
-    var obj23dtiles = require('./lib/obj23dtiles');
+    var obj23dtiles = require('obj23dtiles');
 
     var objPath = './bin/barrel/barrel.obj';
     var tilesetPath = './bin/barrel/barrel.i3dm';
@@ -229,11 +242,13 @@ Or use custom tileset options and BatchTable.
 ## Combine tilesets
 
 ```javascript
+    var obj23dtiles = require('obj23dtiles');
     var fs = require('fs');
-    var combine = require('../lib/combineTileset');
-    var outputPath = './bin/tilesets/tileset.json';
 
-    combine({inputDir : './bin/tilesets/'})
+    var combine = obj23dtiles.combine;
+    var outputPath = './bin/barrel/output/tileset.json';
+
+    combine({inputDir : './bin/barrel/output'})
         .then(function(result) {
             fs.writeFile(outputPath, JSON.stringify(result.tileset), 'utf8');
         })
