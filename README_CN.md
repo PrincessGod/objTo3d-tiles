@@ -12,7 +12,7 @@
 确保已经安装 [Node](https://nodejs.org/en/) , 然后
 
 ```
-npm install obj23dtiles
+npm install -g obj23dtiles
 ```
 
 ### 基本用法
