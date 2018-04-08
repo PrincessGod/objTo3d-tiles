@@ -157,6 +157,9 @@ var argv = yargs
             describe : 'Path to the emissive texture that should override textures in the .mtl file.',
             type : 'string',
             normalize : true
+        },
+        alphaTexture : {
+            describe : 'Path to the alpha texture that should override textures in the .mtl file.'
         }
     })
     .command('combine', 'Combine tilesets in to one tileset.json.')
@@ -193,6 +196,7 @@ if (defined(argv.metallicRoughnessOcclusionTexture) && defined(argv.specularGlos
 
 var objPath = argv.input;
 var outputPath = argv.output;
+
 var name = path.basename(objPath, path.extname(objPath));
 
 if (!defined(outputPath)) {
@@ -226,7 +230,8 @@ var overridingTextures = {
     occlusionTexture : argv.occlusionTexture,
     normalTexture : argv.normalTexture,
     baseColorTexture : argv.baseColorTexture,
-    emissiveTexture : argv.emissiveTexture
+    emissiveTexture : argv.emissiveTexture,
+    alphaTexture : argv.alphaTexture
 };
 
 var options = {
