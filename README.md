@@ -29,7 +29,7 @@ obj23dtiles -i ./bin/barrel/barrel.obj
 * Convert `.obj` to `.glb`
 
 ```
-obj23dtiles -i ./bin/barrel/barrel.obj -b  
+obj23dtiles -i ./bin/barrel/barrel.obj -b
 // Export barrel.glb at obj folder.
 ```
 
@@ -93,7 +93,7 @@ obj23dtiles -i ./bin/barrel/barrel.obj --tileset
 * Create a single tileset with `.b3dm` tile and custom tileset options, custom BatchTable.
 
 ```
-obj23dtiles -i ./bin/barrel/barrel.obj --tileset 
+obj23dtiles -i ./bin/barrel/barrel.obj --tileset
 -p ./bin/barrel/customTilesetOptions.json -c ./bin/barrel/customBatchTable.json
 // Export ./Batchedbarrel folder at obj folder which is a tileset with custom tileset options.
 ```
@@ -143,6 +143,11 @@ obj23dtiles combine -i ./bin/barrel/output
 ## Using as node module
 If you want to use this tool in node or debug, check out [how to use as node module](NODEUSAGE.md).
 
+## Test
+Navigate to this project folder and run
+```
+npm run test
+```
 
 ## Troubleshooting
 First, make sure your `.obj` file is complete, normally include `.obj`, `.mtl` and textures like `.jpg` or `.png`.
@@ -157,7 +162,7 @@ Second, export `.glb` and check if it display correctly. You can use
 In the end, just export `.b3dm` or tileset and load in Cesium.
 
 ## Sample Data
-Sample data under the `.bin\barrel\` folder. 
+Sample data under the `.bin\barrel\` folder.
 
 ```
 barrel\

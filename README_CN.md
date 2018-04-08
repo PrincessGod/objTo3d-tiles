@@ -21,14 +21,14 @@ npm install -g obj23dtiles
 
 ```
 obj23dtiles -i ./bin/barrel/barrel.obj
-// 在模型目录导出 barrel.gltf 
+// 在模型目录导出 barrel.gltf
 ```
 
 * 转换 `.obj` 为 `.glb`
 
 ```
-obj23dtiles -i ./bin/barrel/barrel.obj -b  
-// 在模型目录导出 barrel.glb 
+obj23dtiles -i ./bin/barrel/barrel.obj -b
+// 在模型目录导出 barrel.glb
 ```
 
 >注意: 更多 `.gltf` 和 `.glb` 的转换信息可以在 [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf) 查看。
@@ -45,7 +45,7 @@ obj23dtiles -i ./bin/barrel/barrel.obj -b
 
 ```
 obj23dtiles -i ./bin/barrel/barrel.obj --b3dm
-// 在模型目录导出 barrel.b3dm 
+// 在模型目录导出 barrel.b3dm
 ```
 
 * 转换 `.obj` 为 `.b3dm`，同时导出默认的[属性表](https://github.com/AnalyticalGraphicsInc/3d-tiles/blob/master/TileFormats/BatchTable/README.md) (一个 JSON 文件)。可以从这个表中获取相关信息以便制作自定义属性表。
@@ -92,7 +92,7 @@ obj23dtiles -i ./bin/barrel/barrel.obj --tileset
 * 创建一个 `.b3dm` 瓦片，并自定义瓦片参数和属性表。
 
 ```
-obj23dtiles -i ./bin/barrel/barrel.obj --tileset 
+obj23dtiles -i ./bin/barrel/barrel.obj --tileset
 -p ./bin/barrel/customTilesetOptions.json -c ./bin/barrel/customBatchTable.json
 // 在模型目录导出 Batchedbarrel 文件夹
 ```
@@ -140,6 +140,11 @@ obj23dtiles combine -i ./bin/barrel/output/
 ## 作为 Node 模块使用
 如果你想调试此工具或者在node中使用，可以看看[如何作为Node模块使用](NODEUSAGE.md)。
 
+## 测试
+导航到项目文件夹下，运行
+```
+npm run test
+```
 
 ## 问题定位
 首先，确保你的 `.obj` 文件是完整的，通常情况下包含 `.obj`， `.mtl` 和纹理文件比如 `.jpg` 或 `.png`。
