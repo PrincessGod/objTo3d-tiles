@@ -1,4 +1,7 @@
 # objTo3d-tiles
+
+> WARNING: THIS REPO IS NO LONGER MAINTANING, MAYBE NOT SUPPORT NEWERST CESIUM.
+
 Node command line tool and module convert obj model file to 3D Tiles, based on [obj2gltf](https://github.com/AnalyticalGraphicsInc/obj2gltf).
 
 [Online Demonstration](https://princessgod.github.io/plc/batchedTileset.html)
