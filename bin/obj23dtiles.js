@@ -257,4 +257,8 @@ var options = {
     outputDirectory : outputDirectory
 };
 
-obj23dtiles(objPath, outputPath, options);
+console.time('Total');
+obj23dtiles(objPath, outputPath, options)
+    .then(() => {
+        console.timeEnd('Total');
+    });
